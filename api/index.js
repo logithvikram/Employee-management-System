@@ -157,8 +157,3 @@ app.put('/post', upload.single('file'), async (req, res) => {
         res.json(postDoc);
     });
 });
-
-
-
-// MONGODB_URI=mongodb+srv://logithvikram:9weYW3jRprEUNn3w@cluster0.miuoodu.mongodb.net/blog
-
