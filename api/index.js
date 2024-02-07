@@ -20,7 +20,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://logithvikram:9weYW3jRprEUNn3w@cluster0.miuoodu.mongodb.net/user')
+mongoose.connect('mongodb+srv://logithvikram:*************@cluster0.miuoodu.mongodb.net/user')
     .then(() => console.log("Connected to MongoDB"))
     .catch(error => console.error("MongoDB connection error:", error));
 
