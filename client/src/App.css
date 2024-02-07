@@ -1,89 +1,166 @@
-*{
+* {
   box-sizing: border-box;
 }
-body{
-  color: #222;
+
+body {
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
 }
-img{
-  max-width: max-content;
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: #555;
 }
-main{
-  padding: 10px;
-  max-width:700px;
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+main {
+  padding: 20px;
+  max-width: 800px;
   margin: 0 auto;
 }
-header{
+
+header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
-  margin-top: 20px;
   align-items: center;
+  margin-top: 30px;
 }
-header a{
-  text-decoration: none;
-  color: inherit;
-}
-header a.logo{
+
+header a.logo {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  color: #222;
 }
-header nav{
+
+header nav {
   display: flex;
-  gap: 15px;
-}
-div.post{
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
   gap: 20px;
+}
+
+div.post {
   margin-bottom: 30px;
 }
-div.post div.texts h2{
+
+@media screen and (min-width: 768px) {
+  div.post {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+div.post div.texts h2 {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  color: #222;
 }
 
-div.post p.info{
+div.post p.info {
   margin: 6px 0;
-  color: #888;
-  font-size: .7rem;
+  color: #777;
+  font-size: 0.8rem;
   font-weight: bold;
-  display: flex;
-  gap: 10px;
 }
 
-div.post p.info a.author{
-  color:#333;
+div.post p.info a.author {
+  color: #555;
 }
 
-div.post p.summary{
+div.post p.summary {
   margin: 10px 0;
-  line-height: 1.4rem;
+  line-height: 1.5;
 }
 
-form.login form.register{
-  max-width: 400px;
-  margin: 0auto;
-}
-input{
+input,
+button {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   width: 100%;
-  padding: 5px 7px;
+  padding: 10px;
   border: 2px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
+  font-size: 1rem;
 }
 
-button{
-  width: 100%;
-  display: block;
-  background-color: #555;
-  border: 0;
-  color: 0;
-  border-radius: 5px;
-  padding: 7x 0;
+button {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  cursor: pointer;
 }
 
-form h1{
+form.login h1,
+form.register h1 {
   text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+div.post-page div.image {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+div.post-page div.image img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+div.post-page a {
+  color: #007bff;
+}
+
+div.post-page h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+div.post-page time {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #777;
+}
+
+div.post-page div.author {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+div.post-page div.content p {
+  line-height: 1.6;
+  color: #333;
+}
+
+div.edit-row {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+div.post-page a.edit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 12px 30px;
+  border-radius: 25px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+}
+
+a svg {
+  height: 20px;
+  width: 20px;
 }

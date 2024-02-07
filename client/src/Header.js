@@ -4,24 +4,24 @@ import { UserContext } from "./UserContext";
 
 export default function Header() {
   const { userInfo, logout } = useContext(UserContext);
-
   const username = userInfo?.username;
 
   return (
-    <header>
+    <header className="header">
       <Link to="/" className="logo">
         MyBlog
       </Link>
-      <nav>
+      <nav className="nav">
         {username ? (
           <>
-            <Link to="/create">Create new Post</Link>
-            <button onClick={logout}>Logout</button>
+            <Link to="/create" className="nav-link">Add Post</Link>
+            <button onClick={logout} className="nav-button">Logout</button>
+            <span className="username">{username}</span>
           </>
         ) : (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/login" className="nav-link">Login</Link>
+            <Link to="/register" className="nav-link">Register</Link>
           </>
         )}
       </nav>

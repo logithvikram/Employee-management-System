@@ -1,19 +1,25 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-export default function Post(){
-    return(
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+export default function Post({_id, title, summary, cover, content, author, createdAt }) {
+    return (
         <div className="post">
-        <div className="image">
-           <img src="data:image/jpeg;base64,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"alt=""/>
-          </div> 
-            <div className = "texts">
-          <h2>We handpicked more than 1,300,000 </h2>
-          <p className="info">
-            <a className="author"> logith vikram</a>
-            <time>2023-04-03 17:45</time>
-          </p>
-         <p className="summary">Simply put, a paragraph should be as long or as short as necessary to develop a main idea.</p>
-         </div>
-         
+            <div className="image">
+                <Link to={`/post/${_id}`}>
+                <img src={'http://localhost:4000/' + cover} alt='' style={{ width: '100%', height: '200px' }} />
+                </Link>
+            </div>
+            <div className="texts">
+                <Link to={`/post/${_id}`}>
+                <h2>{title}</h2>
+                </Link>
+                <p className="info">
+                    {author && <a className="author">{author.username}</a>}
+                    
+                    {createdAt && <time>{createdAt}</time>}
+                </p>
+                <p className="summary">{summary}</p>
+            </div>
         </div>
-    )
-    }
+    );
+}
