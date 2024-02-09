@@ -10,6 +10,8 @@ const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
 const fs = require('fs')
 const Post = require('./model/Post');
+require('dotenv').config()
+
 
 const slat = bcrypt.genSaltSync(10);
 const secret = "ajdbfujvsadfjbajsdb";
@@ -20,7 +22,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://logithvikram:*************@cluster0.miuoodu.mongodb.net/user')
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log("Connected to MongoDB"))
     .catch(error => console.error("MongoDB connection error:", error));
 
