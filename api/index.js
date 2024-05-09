@@ -13,7 +13,7 @@ const Post = require('./model/Post');
 require('dotenv').config();
 
 const slat = bcrypt.genSaltSync(10);
-const secret = "ajdbfujvsadfjbajsdb";
+const secret = process.env.JWT_SECRET;
 
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
