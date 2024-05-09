@@ -15,8 +15,9 @@ export default function Post({_id, title, summary, cover, content, author, creat
                     <h2 style={{ color: '#007bff', marginBottom: '10px', fontSize: '1.5rem' }}>{title}</h2>
                 </Link>
                 <p className="info" style={{ color: '#777', marginBottom: '10px', fontSize: '0.8rem', fontWeight: 'bold' }}>
-                    {author && <span className="author" style={{ color: '#555' }}>{author.username}</span>}
-                    <> </>
+                <> create by </>
+                    {author && <span className="author" style={{ color: '#555' }}>{author.username} </span>}
+                    <> at </>
                     {createdAt && <time style={{ color: '#777' }}>{format(new Date(createdAt), "MMMM dd, yyyy")}</time>}
                 </p>
                 <p className="summary" style={{ color: '#555', lineHeight: '1.5', marginBottom: '10px' }}>{summary}</p>

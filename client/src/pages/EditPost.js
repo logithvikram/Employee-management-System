@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import 'react-quill/dist/quill.snow.css';
 import { Navigate, useParams } from 'react-router-dom';
 import Editor from '../Editor';
 
@@ -35,9 +34,8 @@ export default function EditPost() {
         data.set('title', title);
         data.set('summary', summary);
         data.set('content', content);
-        data.set('id', id);
-        if (file?.[0]) {
-            data.set('file', file?.[0]);
+        if (file) {
+            data.append('file', file);
         }
         const res = await fetch(`http://localhost:4000/post/${id}`, {
             method: 'PUT',
@@ -55,7 +53,7 @@ export default function EditPost() {
 
     return (
         <div className="edit-post-container">
-            <h1>Edit Post</h1>
+            <h1>Edit Employee</h1>
             <form onSubmit={updatePost} className="edit-post-form">
                 <input
                     type="text"
@@ -70,13 +68,14 @@ export default function EditPost() {
                     value={summary}
                     onChange={ev => setSummary(ev.target.value)}
                     className="edit-input"
-                />
+                />   
+                 <Editor onChange={setContent} value={content} />
+
                 <input
                     type="file"
                     onChange={ev => setFile(ev.target.files[0])}
                     className="edit-input"
                 />
-                <Editor onChange={setContent} value={content} />
                 <button type="submit" className="edit-submit-btn">Update Post</button>
             </form>
         </div>

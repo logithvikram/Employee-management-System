@@ -9,12 +9,12 @@ export default function Header() {
   return (
     <header className="header">
       <Link to="/" className="logo">
-        MyBlog
+        Employee Mangement system
       </Link>
       <nav className="nav">
         {username ? (
           <>
-            <Link to="/create" className="nav-link">Add Post</Link>
+            <Link to="/create" className="nav-link">Add Employee</Link>
             <button onClick={logout} className="nav-button">Logout</button>
             <span className="username">{username}</span>
           </>

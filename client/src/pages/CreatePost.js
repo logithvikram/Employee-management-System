@@ -9,9 +9,16 @@ export default function CreateNewPost() {
   const [content, setContent] = useState('');
   const [file, setFile] = useState(null);
   const [redirect, setRedirect] = useState(false);
+  const [isValidEmail, setIsValidEmail] = useState(true);
 
   async function createNewPost(ev) {
     ev.preventDefault();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(summary)) {
+      setIsValidEmail(false);
+      return;
+    }
 
     const data = new FormData();
     data.set('title', title);
@@ -36,29 +43,33 @@ export default function CreateNewPost() {
 
   return (
     <div className="create-new-post-container">
-      <h1>Create New Post</h1>
+      <h1>Create New Employee</h1>
       <form onSubmit={createNewPost} className="create-new-post-form">
         <input
           type="text"
-          placeholder="Title"
+          placeholder="Name"
           value={title}
           onChange={ev => setTitle(ev.target.value)}
           className="create-input"
         />
         <input
           type="text"
-          placeholder="Summary"
+          placeholder="Employee Email"
           value={summary}
-          onChange={ev => setSummary(ev.target.value)}
-          className="create-input"
-        />
+          onChange={ev => {
+            setSummary(ev.target.value);
+            setIsValidEmail(true); 
+          }}
+          className={`create-input ${isValidEmail ? '' : 'invalid-email'}`}
+        />  
+        {!isValidEmail && <p className="error-message">Please enter a valid email address</p>}
+        <Editor onChange={setContent} value={content} />
         <input
           type="file"
           onChange={ev => setFile(ev.target.files[0])}
           className="create-input"
         />
-        <Editor onChange={setContent} value={content} />
-        <button type="submit" className="create-submit-btn">Create Post</button>
+        <button type="submit" className="create-submit-btn">Add Employee</button>
       </form>
     </div>
   );

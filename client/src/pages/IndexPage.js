@@ -22,12 +22,12 @@ export default function IndexPage() {
 
     return (
         <div className="index-page">
-            <h1 className="page-title">Latest Posts</h1>
+            <h1 className="page-title">Employee list</h1>
             <div className="post-list">
                 {posts.length > 0 ? (
                     posts.map(post => <Post key={post.id} {...post} />)
                 ) : (
-                    <p className="no-posts-message">No posts available.</p>
+                    <p className="no-posts-message">No Employee available.</p>
                 )}
             </div>
         </div>
