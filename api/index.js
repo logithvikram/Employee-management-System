@@ -155,6 +155,37 @@ app.delete('/post/:id', async (req, res) => {
     }
 });
 
+app.put('/post', upload.single('file'), async (req, res) => {
+    let newPath = null;
+    if (req.file) {
+        const { originalname, path } = req.file;
+        const parts = originalname.split('.');
+        const ext = parts[parts.length - 1];
+        newPath = path + '.' + ext
+        fs.renameSync(path, newPath);
+    }
+    const { token } = req.cookies;
+    jwt.verify(token, secret, {}, async (err, info) => {
+        if (err) {
+            console.error("JWT verification error:", err);
+            return res.status(401).json({ message: "Unauthorized" });
+        }
+        const { id, title, summary, content } = req.body
+        const postDoc = await Post.findById(id);
+        const isSame = JSON.stringify(postDoc.author) === JSON.stringify(info.id);
+        if (!isSame)
+            return res.status(400).json('you are not the author')
+
+        await postDoc.updateOne({
+            title,
+            summary,
+            content,
+            cover: newPath ? newPath : postDoc.cover
+        })
+        res.json(postDoc);
+    });
+});
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
